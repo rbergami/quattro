@@ -31,7 +31,7 @@ echo"</ul>
 $sql="SELECT id,artista,titolo FROM `recensioni` ORDER BY id DESC LIMIT 0,5";
 
 // solo se la query va a buon fine elenca le ultime recensioni inserite
-if ($id_result=mysqli_query($conn, $sql)){
+if ($id_result=mysql_query($sql, $conn)){
 echo"
   <div class=\"relatedLinks\"> 
     <h3>Ultime Recensioni </h3> 
@@ -57,7 +57,7 @@ echo"
 $sql="SELECT id,artista,titolo FROM `recensioni` ORDER BY avg DESC LIMIT 0,5";
 
 // solo se la query va a buon fine elenca le ultime recensioni inserite
-if ($id_result=mysqli_query($conn, $sql)){
+if ($id_result=mysql_query($sql, $conn)){
 echo"
   <div class=\"relatedLinks\"> 
     <h3>Album meglio votati</h3> 
