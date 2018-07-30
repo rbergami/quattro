@@ -50,7 +50,7 @@ CREATE TABLE `recensioni` (
   `user` varchar(8) NOT NULL default '',
   `artista` varchar(40) NOT NULL default '',
   `titolo` varchar(40) NOT NULL default '',
-  `data` timestamp(14) NOT NULL,
+  `data` timestamp(6) NOT NULL,
   `anno` smallint(6) NOT NULL default '0',
   `img_url` varchar(200) default NULL,
   `testo` text NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE `utenti` (
   `cognome` varchar(16) NOT NULL default '',
   `email` varchar(60) NOT NULL default '',
   PRIMARY KEY  (`user`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 #
 # Dumping data for table `utenti`
@@ -105,7 +105,7 @@ CREATE TABLE `voti` (
   `id_review` int(11) NOT NULL default '0',
   `voto` tinyint(4) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM AUTO_INCREMENT=12 ;
 
 #
 # Dumping data for table `voti`
