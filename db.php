@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(E_ALL ^ E_DEPRECATED);
+
 // parametri di connessione
 $db_server="mysql";
 $db_user="mrmoon";
@@ -15,6 +17,5 @@ $db_nomedb="recensioni";
 //sceglie il db
 if (!mysql_select_db($db_nomedb, $conn)) die ("Errore! Impossibile connettersi al database $db_nomedb");
 
-error_reporting(E_ALL ^ E_DEPRECATED);
 
 ?>
