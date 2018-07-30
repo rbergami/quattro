@@ -11,21 +11,21 @@ include "header.php";
 //apre la feature
 echo "<div class=\"feature\">"; 
 
-// FIX_ME Controllo se gi‡ presente il nome utente!
+// FIX_ME Controllo se gi√† presente il nome utente!
 $query="INSERT INTO utenti (user, passwd, admin, nome,
-	cognome, email) VALUES('".$HTTP_POST_VARS['user']."','".$HTTP_POST_VARS['passwd']."','n',
-	'".$HTTP_POST_VARS['nome']."','"
-	.$HTTP_POST_VARS['cognome']."','".$HTTP_POST_VARS['email']."')";
+	cognome, email) VALUES('".$_POST['user']."','".$_POST['passwd']."','n',
+	'".$_POST['nome']."','"
+	.$_POST['cognome']."','".$_POST['email']."')";
 
 
 if (mysql_query($query, $conn)){
 
 echo "<br><strong>Registrazione effettuata con successo!</strong>
-		<p></p>Una email riepilogativa verr&agrave; Ë stata inviata all' indirizzo inserito durante la registrazione.";
+		<p></p>Una email riepilogativa verr&agrave; √® stata inviata all' indirizzo inserito durante la registrazione.";
 //testo della email riepilogativa:
-$testo="Registazione a \"QuAtTro - Recensioni musicali\" effettuata con successo\n I dati di login sono:\nNomeUtente: ".$HTTP_POST_VARS['user']."\nPassword: ".$HTTP_POST_VARS['passwd']."\nNome: ".$HTTP_POST_VARS['nome']."\nCognome: ".$HTTP_POST_VARS['cognome']."\n             Grazie!";
+$testo="Registazione a \"QuAtTro - Recensioni musicali\" effettuata con successo\n I dati di login sono:\nNomeUtente: ".$_POST['user']."\nPassword: ".$_POST['passwd']."\nNome: ".$_POST['nome']."\nCognome: ".$_POST['cognome']."\n             Grazie!";
 
-mail($HTTP_POST_VARS['email'],"Registrazione a QuAtTro",$testo,"Da register@quattro");
+mail($_POST['email'],"Registrazione a QuAtTro",$testo,"Da register@quattro");
 }
 else echo "<p></p><h2>Errore!</h2> Nome utente gi&agrave; utilizzato da qualcuno o errore nella esecuzione della query \"$query\" reinserire i dati";
 
