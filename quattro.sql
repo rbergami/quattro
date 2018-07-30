@@ -57,7 +57,7 @@ CREATE TABLE `recensioni` (
   `genere` enum('vocal-jazz','swing-jazz','traditional-jazz','modal-jazz','jazz-funk','smooth-jazz','acid-jazz','soul-jazz','fusion','blues-jazz','free-jazz','standard-jazz','dancefloor-jazz','groove','caribbean-jazz','bossa-nova') NOT NULL default 'vocal-jazz',
   `avg` decimal(3,2) NOT NULL default '0.00',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=27 ;
+) ENGINE=MyISAM AUTO_INCREMENT=27 ;
 
 #
 # Dumping data for table `recensioni`
