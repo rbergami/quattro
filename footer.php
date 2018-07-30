@@ -10,5 +10,5 @@ Powered by:&nbsp;
 </div>"; 
 
 //chiude la connessione al db server
-mysqli_close($conn);	
+mysql_close($conn);	
 ?>
