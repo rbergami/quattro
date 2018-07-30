@@ -6,7 +6,7 @@ if (isset($_SESSION['dati'])) $dati=$_SESSION['dati'];
 //recuperiamo dal link la variabile che identifica la recensione da mostrare
 $id_review=$HTTP_GET_VARS['id_review'];
 include "header.php";
-
+echo $id_review;
 //recupera i dati sulla recensione
 $sql="SELECT * FROM recensioni WHERE id=".$id_review;
 echo $sql;
