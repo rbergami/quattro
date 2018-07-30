@@ -6,10 +6,9 @@ if (isset($_SESSION['dati'])) $dati=$_SESSION['dati'];
 //recuperiamo dal link la variabile che identifica la recensione da mostrare
 $id_review=$_GET['id_review'];
 include "header.php";
-echo $id_review;
+
 //recupera i dati sulla recensione
 $sql="SELECT * FROM recensioni WHERE id=".$id_review;
-echo $sql;
 
 //controlla la corretta esecuzione della query
 if (!$res=mysql_query($sql, $conn)) die("<br>Errore esecuzione query!");
