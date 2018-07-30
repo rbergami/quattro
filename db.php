@@ -1,9 +1,9 @@
 <?php
 
 // parametri di connessione
-$db_server="localhost";
+$db_server="mysql";
 $db_user="mrmoon";
-$db_password="mrzmrz";
+$db_password="mrmoon";
 
 //connessione al db server
 $conn= mysql_connect($db_server, $db_user, $db_password)
