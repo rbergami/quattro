@@ -1,4 +1,6 @@
 <?php 
+error_reporting(E_ALL ^ E_DEPRECATED);
+
 //chiude il <div id"content"> presente in header.php
 echo "</div> <!--end content -->"; 
 echo
