@@ -3,7 +3,7 @@
 error_reporting(E_ALL ^ E_DEPRECATED);
 
 // parametri di connessione
-$db_server="mysql";
+$db_server="mysql.quattro.svc";
 $db_user="mrmoon";
 $db_password="mrmoon";
 
