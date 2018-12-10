@@ -140,7 +140,7 @@ objects:
                 name: ${NAME}
           - name: OPCACHE_REVALIDATE_FREQ
             value: ${OPCACHE_REVALIDATE_FREQ}
-          image: ' '
+          image: 'docker-registry.default.svc:5000/quattro/quattro'
           livenessProbe:
             httpGet:
               path: /health.php
