@@ -14,19 +14,15 @@ metadata:
 
       WARNING: Any data stored will be lost upon pod destruction. Only use this template for testing.
     iconClass: icon-php
-    openshift.io/display-name: CakePHP + MySQL (Ephemeral)
-    openshift.io/documentation-url: https://github.com/sclorg/cakephp-ex
+    openshift.io/display-name: Quattro Website
+    openshift.io/documentation-url: https://github.com/rbergami/quattro
     openshift.io/long-description: This template defines resources needed to develop
       a CakePHP application, including a build configuration, application deployment
       configuration, and database deployment configuration.  The database is stored
       in non-persistent storage, so this configuration should be used for experimental
-      purposes only.
-    openshift.io/provider-display-name: Red Hat, Inc.
-    openshift.io/support-url: https://access.redhat.com
     tags: quickstart,php,cakephp
   name: quattro
   namespace: openshift
-  resourceVersion: "1299"
 objects:
 - apiVersion: v1
   kind: Secret
@@ -70,17 +66,12 @@ objects:
 - apiVersion: v1
   kind: BuildConfig
   metadata:
-    annotations:
-      description: Defines how to build the application
-      template.alpha.openshift.io/wait-for-ready: "true"
     name: ${NAME}
   spec:
     output:
       to:
         kind: ImageStreamTag
         name: ${NAME}:latest
-    postCommit:
-      script: ./vendor/bin/phpunit
     source:
       contextDir: ${CONTEXT_DIR}
       git:
@@ -106,22 +97,12 @@ objects:
 - apiVersion: v1
   kind: DeploymentConfig
   metadata:
-    annotations:
-      description: Defines how to deploy the application server
-      template.alpha.openshift.io/wait-for-ready: "true"
     name: ${NAME}
   spec:
     replicas: 1
     selector:
       name: ${NAME}
     strategy:
-      recreateParams:
-        pre:
-          execNewPod:
-            command:
-            - ./migrate-database.sh
-            containerName: C
-          failurePolicy: Retry
       type: Recreate
     template:
       metadata:
@@ -167,7 +148,7 @@ objects:
             initialDelaySeconds: 30
             periodSeconds: 60
             timeoutSeconds: 3
-          name: quattro-mysql
+          name: quattro-app
           ports:
           - containerPort: 8080
           readinessProbe:
@@ -184,7 +165,7 @@ objects:
     - imageChangeParams:
         automatic: true
         containerNames:
-        - quattro-app
+        - quattro
         from:
           kind: ImageStreamTag
           name: ${NAME}:latest
@@ -207,8 +188,6 @@ objects:
   kind: DeploymentConfig
   metadata:
     annotations:
-      description: Defines how to deploy the database
-      template.alpha.openshift.io/wait-for-ready: "true"
     name: ${DATABASE_SERVICE_NAME}
   spec:
     replicas: 1
@@ -271,7 +250,7 @@ objects:
         - mysql
         from:
           kind: ImageStreamTag
-          name: mysql:5.7
+          name: mysql:5.6
           namespace: ${NAMESPACE}
       type: ImageChange
     - type: ConfigChange
