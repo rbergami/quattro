@@ -120,7 +120,7 @@ objects:
           execNewPod:
             command:
             - ./migrate-database.sh
-            containerName: cakephp-mysql-example
+            containerName: C
           failurePolicy: Retry
       type: Recreate
     template:
@@ -167,7 +167,7 @@ objects:
             initialDelaySeconds: 30
             periodSeconds: 60
             timeoutSeconds: 3
-          name: cakephp-mysql-example
+          name: quattro-mysql
           ports:
           - containerPort: 8080
           readinessProbe:
@@ -184,7 +184,7 @@ objects:
     - imageChangeParams:
         automatic: true
         containerNames:
-        - cakephp-mysql-example
+        - quattro-app
         from:
           kind: ImageStreamTag
           name: ${NAME}:latest
@@ -280,7 +280,7 @@ parameters:
   displayName: Name
   name: NAME
   required: true
-  value: cakephp-mysql-example
+  value: quattro
 - description: The OpenShift Namespace where the ImageStream resides.
   displayName: Namespace
   name: NAMESPACE
@@ -290,7 +290,7 @@ parameters:
   displayName: PHP Version
   name: PHP_VERSION
   required: true
-  value: "7.1"
+  value: "5.5"
 - description: Maximum amount of memory the CakePHP container can use.
   displayName: Memory Limit
   name: MEMORY_LIMIT
@@ -305,7 +305,7 @@ parameters:
   displayName: Git Repository URL
   name: SOURCE_REPOSITORY_URL
   required: true
-  value: https://github.com/sclorg/cakephp-ex.git
+  value: https://github.com/rbergami/quattro.git
 - description: Set this to a branch name, tag or other ref of your repository if you
     are not using the default branch.
   displayName: Git Reference
@@ -336,15 +336,15 @@ parameters:
 - displayName: Database Name
   name: DATABASE_NAME
   required: true
-  value: default
+  value: recensioni
 - displayName: Database User
   name: DATABASE_USER
   required: true
-  value: cakephp
+  value: mrmoon
 - displayName: Database Password
-  from: '[a-zA-Z0-9]{16}'
-  generate: expression
   name: DATABASE_PASSWORD
+  required: true
+  value: mrmoon
 - description: Set this to a long random string.
   displayName: CakePHP secret token
   from: '[\w]{50}'
