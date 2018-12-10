@@ -1,10 +1,10 @@
 <?php 
 session_start();
-//se l'utente ha già effettuato login recupera i dati personali dell'utente nell'array $dati
+//se l'utente ha giÃ  effettuato login recupera i dati personali dell'utente nell'array $dati
 if (isset($_SESSION['dati'])) $dati=$_SESSION['dati'];
 
 //recuperiamo dal link la variabile che identifica la recensione da mostrare
-$id_review=$HTTP_GET_VARS['id_review'];
+$id_review=$_GET['id_review'];
 include "header.php";
 
 //recupera i dati sulla recensione
@@ -25,8 +25,8 @@ printf("<p><center><em>Recensione di: <strong>%s</strong></em></center></p>",$re
 echo"<p><center><em>Genere: <strong>".$recensione['genere']."</strong></em></p></center>";
 echo"<p><center><em>Anno di pubblicazione: <strong>".$recensione['anno']."</strong></em></p></center>";
 
-//se l'utente è amministratore o l'autore della recensione mostra opzioni MODIFICA e CANCELLA
-//il primo if serve ad evitare il warning se la var $dati non è definita
+//se l'utente Ã¨ amministratore o l'autore della recensione mostra opzioni MODIFICA e CANCELLA
+//il primo if serve ad evitare il warning se la var $dati non Ã¨ definita
 if (isset($dati)) if (($recensione['user']==$dati['user']) or ($dati['admin']== 'y' ) ){
 echo "<p><center><h2><a href=\"mod_review.php?".session_name()."=".session_id()."&mod=0&id_review=".$id_review."\" onClick=\"return confirm('Sicuro di voler modificare la recensione?');\" >Modifica...
 </a> :: <a href=\"canc_review_ok.php?".session_name()."=".session_id()."&mod=1&id_review=".$id_review."\" onClick=\"return confirm('Cancellando la recensione eliminerai ANCHE I COMMENTI ASSOCIATI. Sei sicuro?');\" >Cancella...</a></h2></center></p>";

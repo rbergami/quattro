@@ -1,4 +1,6 @@
 <?php 
+error_reporting(E_ALL ^ E_DEPRECATED);
+
 //chiude il <div id"content"> presente in header.php
 echo "</div> <!--end content -->"; 
 echo
@@ -74,10 +76,7 @@ for ($i=0;$i<$nrighe;$i++){
 mysql_free_result($id_result);
 
 echo"    </ul> 
-<p> <a href=\"http://www.mozilla.org/products/firefox/\"
-title=\"Get Firefox - Web Browsing Redefined\"><img
-src=\"http://www.mozilla.org/products/firefox/buttons/firefox_80x15.png\"
-width=\"80\" height=\"15\" border=\"0\" alt=\"Get Firefox\"></a></p><p></p>
+
   </div>";
 //chiude if mysql_query($sql, $conn)
 }  

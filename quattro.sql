@@ -21,22 +21,22 @@ CREATE TABLE `commenti` (
   `id_review` int(11) NOT NULL default '0',
   `user` varchar(8) NOT NULL default '',
   `testo` text NOT NULL,
-  `data` timestamp(14) NOT NULL,
+  `data` timestamp(6) NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=46 ;
+) ENGINE=MyISAM AUTO_INCREMENT=46 ;
 
 #
 # Dumping data for table `commenti`
 #
 
 INSERT INTO `commenti` (`id`, `id_review`, `user`, `testo`, `data`) VALUES (1, 14, 'mrmoon', 'recensione un po\' troppo corta', 20041203222005),
-(43, 26, 'mrmoon', 'sì, in effetti il meglio si raggiunge con "Joy and Pain"', 20040403133743),
+(43, 26, 'mrmoon', 'sÃ¬, in effetti il meglio si raggiunge con "Joy and Pain"', 20040403133743),
 (41, 26, 'mrmoon', 'Piace molto anche a me!', 20040403133328),
 (42, 26, 'mrmoon', 'ritengo che le prime tracce siano noiose...fortunatamente compensano le ultime :-)', 20040403133534),
-(30, 13, 'mrmoon', 'secondo me è il migliore album degli incognito', 20001221112354),
+(30, 13, 'mrmoon', 'secondo me Ã¨ il migliore album degli incognito', 20001221112354),
 (40, 23, 'mrmoon', 'ottimo', 20040403123434),
 (39, 13, 'mrmoon', 'anche secondo me prova tempo', 20001220152523),
-(44, 23, 'bene', 'Bella la copertina, ma non ho mai ascoltato il cd... Se ne vale la pena lo farò...', 20040501172902),
+(44, 23, 'bene', 'Bella la copertina, ma non ho mai ascoltato il cd... Se ne vale la pena lo farÃ²...', 20040501172902),
 (45, 26, 'mrmoon', 'Che groove ragazzi!', 20040509112638);
 
 # --------------------------------------------------------
@@ -50,14 +50,14 @@ CREATE TABLE `recensioni` (
   `user` varchar(8) NOT NULL default '',
   `artista` varchar(40) NOT NULL default '',
   `titolo` varchar(40) NOT NULL default '',
-  `data` timestamp(14) NOT NULL,
+  `data` timestamp(6) NOT NULL,
   `anno` smallint(6) NOT NULL default '0',
   `img_url` varchar(200) default NULL,
   `testo` text NOT NULL,
   `genere` enum('vocal-jazz','swing-jazz','traditional-jazz','modal-jazz','jazz-funk','smooth-jazz','acid-jazz','soul-jazz','fusion','blues-jazz','free-jazz','standard-jazz','dancefloor-jazz','groove','caribbean-jazz','bossa-nova') NOT NULL default 'vocal-jazz',
   `avg` decimal(3,2) NOT NULL default '0.00',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=27 ;
+) ENGINE=MyISAM AUTO_INCREMENT=27 ;
 
 #
 # Dumping data for table `recensioni`
@@ -82,7 +82,7 @@ CREATE TABLE `utenti` (
   `cognome` varchar(16) NOT NULL default '',
   `email` varchar(60) NOT NULL default '',
   PRIMARY KEY  (`user`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 #
 # Dumping data for table `utenti`
@@ -105,7 +105,7 @@ CREATE TABLE `voti` (
   `id_review` int(11) NOT NULL default '0',
   `voto` tinyint(4) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM AUTO_INCREMENT=12 ;
 
 #
 # Dumping data for table `voti`
