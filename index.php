@@ -1,6 +1,6 @@
 <?php 
 session_start();
-//se l'utente ha già effettuato login recupera i dati personali dell'utente nell'array $dati
+//se l'utente ha giÃ  effettuato login recupera i dati personali dell'utente nell'array $dati
 if (isset($_SESSION['dati'])) $dati=$_SESSION['dati'];
 
 include "header.php";
@@ -20,7 +20,7 @@ else echo "<font color=#000000> Ospite </font> !";
      Il nome di questo sito rende omaggio ad un club di Tokyo, il 
 	 <a href="http://www.net-flyer.tv/quattro/index.cfm ">club quattro</a> specializzato 
 	 nell' ospitare live performance di musicisti della scena acid-jazz. 
-	 Su questo sito si raccolgono però recensioni di album appartenenti a qualsiasi
+	 Su questo sito si raccolgono recensioni di album appartenenti a qualsiasi
 	 genere dello stile musicale <strong>jazz</strong>. <br> 
     </p> 
   </div>
@@ -46,7 +46,7 @@ else echo "<font color=#000000> Ospite </font> !";
      Questo sito ha un feed di notizie rss versione 2.0 raggiungibile dai link 
 	 sulla barra laterale. Il nome <a href="http://blogs.law.harvard.edu/tech/rss">RSS</a>
 	 sta per <strong>R</strong>eally <strong>S</strong>imple <strong>S</strong>yndication 
-	 ed è un formato di diffusione di contenuti, utilizzato tipicamente da blog.
+	 ed Ã¨ un formato di diffusione di contenuti, utilizzato tipicamente da blog.
 	 <br> In sostanza gli utenti di questo sito
 	 possono leggere il newsfeed e rimanere sempre aggiornati sulle nuove recensioni senza
 	 puntare il proprio browser a questo indirizzo.
