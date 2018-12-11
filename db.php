@@ -3,9 +3,9 @@
 error_reporting(E_ALL ^ E_DEPRECATED);
 
 // parametri di connessione
-$db_server="mysql.quattro.svc";
-$db_user="mrmoon";
-$db_password="mrmoon";
+$db_server=getenv(strtoupper(getenv("DATABASE_SERVICE_NAME"))."_SERVICE_HOST");
+$db_user=getenv("DATABASE_USER");
+$db_password=getenv("DATABASE_PASSWORD");
 
 //connessione al db server
 $conn= mysql_connect($db_server, $db_user, $db_password)
