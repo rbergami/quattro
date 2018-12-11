@@ -6,7 +6,7 @@ labels:
 message: |-
   The following service(s) have been created in your project: ${NAME}, ${DATABASE_SERVICE_NAME}.
 
-  For more information about using this template blablabla.
+  For more information about using this template see: https://github.com/rbergami/quattro.
 metadata:
   annotations:
     description: |-
