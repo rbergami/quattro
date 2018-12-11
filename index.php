@@ -37,7 +37,7 @@ else echo "<font color=#000000> Ospite </font> !";
     <p>
 	Per una corretta funzionalit&agrave; dei contenuti &egrave; necessario attivare i Javascript, 
 	non &egrave; richiesto per&ograve; il supporto ai cookie. Visto il pesante uso di CSS &egrave;
-	necessario un browser che li supporti per una corretta visualizzazione delle pagine.
+	necessario un browser che li supporti per una corretta visualizzazione delle pagine. 
 	</p> 
 </div>
 <div class="story"> 
