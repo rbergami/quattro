@@ -6,7 +6,7 @@ labels:
 message: |-
   The following service(s) have been created in your project: ${NAME}, ${DATABASE_SERVICE_NAME}.
 
-  For more information about using this template blablabla
+  For more information about using this template blablabla.
 metadata:
   annotations:
     description: |-
@@ -17,10 +17,10 @@ metadata:
     openshift.io/display-name: Quattro Website
     openshift.io/documentation-url: https://github.com/rbergami/quattro
     openshift.io/long-description: This template defines resources needed to develop
-      a CakePHP application, including a build configuration, application deployment
+      a PHP application, including a build configuration, application deployment
       configuration, and database deployment configuration.  The database is stored
       in non-persistent storage, so this configuration should be used for experimental
-    tags: quickstart,php,cakephp
+    tags: quickstart,php
   name: quattro
   namespace: openshift
 objects:
@@ -29,8 +29,6 @@ objects:
   metadata:
     name: ${NAME}
   stringData:
-    cakephp-secret-token: ${CAKEPHP_SECRET_TOKEN}
-    cakephp-security-salt: ${CAKEPHP_SECURITY_SALT}
     database-password: ${DATABASE_PASSWORD}
     database-user: ${DATABASE_USER}
 - apiVersion: v1
@@ -80,13 +78,10 @@ objects:
       type: Git
     strategy:
       sourceStrategy:
-        env:
-        - name: COMPOSER_MIRROR
-          value: ${COMPOSER_MIRROR}
         from:
           kind: ImageStreamTag
           name: php:${PHP_VERSION}
-          namespace: ${NAMESPACE}
+          namespace: openshift
       type: Source
     triggers:
     - type: ImageChange
@@ -103,7 +98,7 @@ objects:
     selector:
       name: ${NAME}
     strategy:
-      type: Recreate
+      type: Rolling
     template:
       metadata:
         labels:
@@ -128,19 +123,7 @@ objects:
               secretKeyRef:
                 key: database-password
                 name: ${NAME}
-          - name: CAKEPHP_SECRET_TOKEN
-            valueFrom:
-              secretKeyRef:
-                key: cakephp-secret-token
-                name: ${NAME}
-          - name: CAKEPHP_SECURITY_SALT
-            valueFrom:
-              secretKeyRef:
-                key: cakephp-security-salt
-                name: ${NAME}
-          - name: OPCACHE_REVALIDATE_FREQ
-            value: ${OPCACHE_REVALIDATE_FREQ}
-          image: 'docker-registry.default.svc:5000/quattro/quattro'
+          image: ' '
           livenessProbe:
             httpGet:
               path: /health.php
@@ -148,7 +131,7 @@ objects:
             initialDelaySeconds: 30
             periodSeconds: 60
             timeoutSeconds: 3
-          name: quattro-app
+          name: quattro
           ports:
           - containerPort: 8080
           readinessProbe:
@@ -269,8 +252,8 @@ parameters:
   displayName: PHP Version
   name: PHP_VERSION
   required: true
-  value: "5.5"
-- description: Maximum amount of memory the CakePHP container can use.
+  value: "5.6"
+- description: Maximum amount of memory the PHP container can use.
   displayName: Memory Limit
   name: MEMORY_LIMIT
   required: true
@@ -293,7 +276,7 @@ parameters:
     of your repository.
   displayName: Context Directory
   name: CONTEXT_DIR
-- description: The exposed hostname that will route to the CakePHP service, if left
+- description: The exposed hostname that will route to the PHP service, if left
     blank a value will be defaulted.
   displayName: Application Hostname
   name: APPLICATION_DOMAIN
@@ -324,21 +307,4 @@ parameters:
   name: DATABASE_PASSWORD
   required: true
   value: mrmoon
-- description: Set this to a long random string.
-  displayName: CakePHP secret token
-  from: '[\w]{50}'
-  generate: expression
-  name: CAKEPHP_SECRET_TOKEN
-- description: Security salt for session hash.
-  displayName: CakePHP Security Salt
-  from: '[a-zA-Z0-9]{40}'
-  generate: expression
-  name: CAKEPHP_SECURITY_SALT
-- description: How often to check script timestamps for updates, in seconds. 0 will
-    result in OPcache checking for updates on every request.
-  displayName: OPcache Revalidation Frequency
-  name: OPCACHE_REVALIDATE_FREQ
-  value: "2"
-- description: The custom Composer mirror URL
-  displayName: Custom Composer Mirror URL
-  name: COMPOSER_MIRROR
+
